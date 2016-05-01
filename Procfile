@@ -1,1 +1,1 @@
-web:    java -cp target/classes:target/dependency/* Marinete
+web:    java -cp target/classes:target/dependency/* ApelidoService
