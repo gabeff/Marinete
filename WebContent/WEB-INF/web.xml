@@ -20,7 +20,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Jersey Web Application</servlet-name>
-		<url-pattern>/marinete/*</url-pattern>
+		<url-pattern>/webservice/*</url-pattern>
 	</servlet-mapping>
 
 </web-app>
