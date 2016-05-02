@@ -1,5 +1,3 @@
-com\marinete\restjersey\FtoCService.class
-com\marinete\restjersey\CtoFService.class
 com\marinete\resource\UsuarioResource.class
 com\marinete\webservice\ApelidoService.class
 com\marinete\business\UsuarioBusiness.class

@@ -13,5 +13,9 @@ public class UsuarioBusiness {
 		return usuarioDao.login(usuario);
 	}
 	
+	public String cadastrar(Usuario usuario){
+		usuarioDao = new UsuarioDAO();
+		return usuarioDao.cadastrar(usuario);
+	}
 
 }
