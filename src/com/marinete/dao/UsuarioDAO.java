@@ -22,7 +22,7 @@ public class UsuarioDAO {
 	private void Init(){
 		Close();
 		try {
-			if (currentCon != null || currentCon.isClosed()) {
+			if (currentCon == null || currentCon.isClosed()) {
 				currentCon = ConnectionFactory.getConnection();
 			}
 		} catch (ClassNotFoundException | SQLException e) {
