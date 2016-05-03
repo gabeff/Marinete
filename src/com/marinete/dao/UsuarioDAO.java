@@ -15,7 +15,6 @@ public class UsuarioDAO {
 	private static ResultSet rs = null;
 	private static Statement stmt;
 	private static PreparedStatement pstmt;
-	private String retorno;
 	private String nome;
 	private String senha;
 
@@ -31,7 +30,6 @@ public class UsuarioDAO {
 	}
 
 	private void Close() {
-		retorno = null;
 		nome = null;
 		senha = null;
 
@@ -72,6 +70,7 @@ public class UsuarioDAO {
 
 	public String login(Usuario usuario) {
 		Init();
+		String retorno = null;
 
 		nome = usuario.getNome();
 		senha = usuario.getSenha();
@@ -104,6 +103,7 @@ public class UsuarioDAO {
 
 	public String cadastrar(Usuario usuario) {
 		Init();
+		String retorno = null;
 
 		try {
 			// cria um preparedStatement
