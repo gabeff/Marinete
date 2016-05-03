@@ -18,7 +18,7 @@ public class UsuarioResource {
 	private UsuarioBusiness usuarioBusiness;
 
 	@Path("/login")
-	@GET
+	@POST
 	@Consumes("application/json")
 	@Produces("text/plain")
 	public String login(Usuario usuario) throws JSONException {
