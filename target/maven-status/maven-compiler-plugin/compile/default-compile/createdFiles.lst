@@ -1,7 +1,11 @@
+com\marinete\bean\Marinete.class
+com\marinete\business\MarineteBusiness.class
 com\marinete\resource\UsuarioResource.class
 com\marinete\webservice\ApelidoService.class
 com\marinete\business\UsuarioBusiness.class
 com\marinete\bean\Usuario.class
+com\marinete\resource\MarineteResource.class
 com\marinete\dao\UsuarioDAO.class
+com\marinete\dao\MarineteDAO.class
 com\marinete\jdbc\ConnectionFactory.class
 com\marinete\jdbc\TesteConexao.class

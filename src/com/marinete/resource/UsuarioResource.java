@@ -12,7 +12,7 @@ import org.json.JSONException;
 import com.marinete.bean.Usuario;
 import com.marinete.business.UsuarioBusiness;
 
-@Path("/usuarioResource")
+@Path("/usuario")
 public class UsuarioResource {
 	
 	private UsuarioBusiness usuarioBusiness;
