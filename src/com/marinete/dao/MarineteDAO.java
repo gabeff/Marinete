@@ -76,10 +76,9 @@ public class MarineteDAO {
 			
 			stmt = currentCon.createStatement();
 			rs = stmt.executeQuery(searchQuery);
-			
-			m = new Marinete();
 
 			while (rs.next()) {
+				m = new Marinete();
 				m.setAvaliacao(rs.getInt("avaliacao"));
 				m.setCidade(rs.getString("cidade"));
 				m.setEstado(rs.getString("estado"));
