@@ -84,9 +84,9 @@ public class UsuarioDAO {
 			boolean cadastrado = rs.next();
 
 			if (cadastrado) {
-				retorno = "Bem vindo, " + nome;
+				retorno = "1";
 			} else {
-				retorno = "Login ou Senha inválidos";
+				retorno = "0";
 			}
 		}
 
@@ -119,7 +119,7 @@ public class UsuarioDAO {
 			pstmt.close();
 			
 			// retorna sucesso
-			retorno = "Usuário cadastrado com sucesso";
+			retorno = "1";
 		} catch (Exception ex) {
 			// retorna falha no cadastro
 			retorno = "Cadastro Falhou: Uma excessão ocorreu! " + ex;
