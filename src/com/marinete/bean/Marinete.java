@@ -10,7 +10,7 @@ public class Marinete {
 	private String nascimento;
 	private String cidade;
 	private String estado;
-	private Integer avaliacao;
+	private Double avaliacao;
 
 	public Integer getId() {
 		return id;
@@ -52,11 +52,11 @@ public class Marinete {
 		this.estado = estado;
 	}
 
-	public Integer getAvaliacao() {
+	public Double getAvaliacao() {
 		return avaliacao;
 	}
 
-	public void setAvaliacao(Integer avaliacao) {
+	public void setAvaliacao(Double avaliacao) {
 		this.avaliacao = avaliacao;
 	}
 

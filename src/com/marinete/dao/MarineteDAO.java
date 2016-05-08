@@ -68,7 +68,7 @@ public class MarineteDAO {
 
 	public List<Marinete> listarMarinetes() {
 		Init();
-		String searchQuery = "select * from marinete";
+		String searchQuery = "select * from marinete order by avaliacao desc";
 		Marinete m;
 		List<Marinete> marinetes = new LinkedList<>();
 
@@ -79,7 +79,7 @@ public class MarineteDAO {
 
 			while (rs.next()) {
 				m = new Marinete();
-				m.setAvaliacao(rs.getInt("avaliacao"));
+				m.setAvaliacao(rs.getDouble("avaliacao"));
 				m.setCidade(rs.getString("cidade"));
 				m.setEstado(rs.getString("estado"));
 				m.setId(rs.getInt("id"));
