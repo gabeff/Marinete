@@ -22,8 +22,7 @@ public class MarineteResource {
 	public String listarMarinetes() {
 		marineteBusiness = new MarineteBusiness();
 		List<Marinete> marinetes = marineteBusiness.listarMarinetes();
-		String retorno = new Gson().toJson(marinetes);
-		return retorno;
+		return new Gson().toJson(marinetes);
 	}
 
 }
