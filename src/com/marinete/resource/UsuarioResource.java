@@ -17,13 +17,13 @@ public class UsuarioResource {
 	
 	private UsuarioBusiness usuarioBusiness;
 
-	@Path("/login")
+	@Path("/logar")
 	@POST
 	@Consumes("application/json")
 	@Produces("text/plain")
-	public String login(Usuario usuario) throws JSONException {
+	public String logar(Usuario usuario) throws JSONException {
 		usuarioBusiness = new UsuarioBusiness();
-		return usuarioBusiness.login(usuario);
+		return usuarioBusiness.logar(usuario);
 	}
 	
 	@Path("/cadastrar")

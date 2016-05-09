@@ -68,7 +68,7 @@ public class UsuarioDAO {
 
 	}
 
-	public String login(Usuario usuario) {
+	public String logar(Usuario usuario) {
 		Init();
 		String retorno = null;
 
@@ -86,12 +86,12 @@ public class UsuarioDAO {
 			if (cadastrado) {
 				retorno = "1";
 			} else {
-				retorno = "0";
+				retorno = "Usuário e/ou senha inválidos!";
 			}
 		}
 
 		catch (Exception ex) {
-			System.out.println("Log In falhou: Uma excessão ocorreu! " + ex);
+			retorno = "Log In falhou: Uma excessão ocorreu! " + ex;
 		}
 
 		finally {
