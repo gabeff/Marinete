@@ -12,6 +12,9 @@ public class MarineteBusiness {
 	public List<Marinete> listarMarinetes() {
 		mDao = new MarineteDAO();
 		List<Marinete> marinetes = mDao.listarMarinetes();
+		if (marinetes.isEmpty()) {
+			return null;
+		}
 		return marinetes;
 	}
 

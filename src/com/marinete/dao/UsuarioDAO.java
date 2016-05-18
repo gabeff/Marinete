@@ -91,7 +91,7 @@ public class UsuarioDAO {
 		}
 
 		catch (Exception ex) {
-			retorno = "Log In falhou: Uma excessão ocorreu! " + ex;
+			retorno = "Login falhou: " + ex;
 		}
 
 		finally {
@@ -122,7 +122,7 @@ public class UsuarioDAO {
 			retorno = "1";
 		} catch (Exception ex) {
 			// retorna falha no cadastro
-			retorno = "Cadastro Falhou: Uma excessão ocorreu! " + ex;
+			retorno = "Cadastro Falhou: " + ex;
 		} finally {
 			Close();
 		}
