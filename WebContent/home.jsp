@@ -65,7 +65,7 @@
 
 				<div class="inner cover">
 					<h1 class="cover-heading">Marinete.</h1>
-					<p class="lead">Sinergia é um app para android e ios para solicitar
+					<p class="lead">Marinete é um app para android e ios para solicitar
 					diaristas. Veja a lista das melhores diaristas da cidade, escolha a
 					sua preferida e agende a data do serviço.</p>
 					<p class="lead">
