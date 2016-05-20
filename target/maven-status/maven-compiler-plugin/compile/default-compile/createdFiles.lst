@@ -2,6 +2,7 @@ com\marinete\bean\Marinete.class
 com\marinete\business\MarineteBusiness.class
 com\marinete\resource\UsuarioResource.class
 com\marinete\business\UsuarioBusiness.class
+com\marinete\controller\MarineteServlet.class
 com\marinete\bean\Usuario.class
 com\marinete\resource\MarineteResource.class
 com\marinete\dao\UsuarioDAO.class

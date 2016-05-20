@@ -47,7 +47,7 @@
 								<li><a class="page-scroll" href="#entenda">Entenda</a></li>
 								<li><a class="page-scroll" href="#contato">Contato</a></li>
 							</ul>
-							<form class="navbar-form navbar-right" action="SinergiaServlet" method="post">
+							<form class="navbar-form navbar-right" action="MarineteServlet" method="post">
 								<div class="form-group">
 									<input type="text" name="login" placeholder="Login" class="form-control">
 								</div>
@@ -64,11 +64,12 @@
 				</nav>
 
 				<div class="inner cover">
-					<h1 class="cover-heading">Marinete.</h1>
-					<p class="lead">Sinergia é um app para android e ios para solicitar
-					diaristas. Veja a lista das melhores diaristas da cidade, escolha a
-					sua preferida e agende a data do serviço.</p>
-					<p class="lead">
+					<h1 class="cover-heading"><img src="./imagens/logo_branco.png" />.</h1>
+					<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+						nisi ut aliquip ex ea commodo consequat.</p>
+					<p>
 						<a href="#entenda" class="btn btn-lg btn-default page-scroll">Entenda
 							melhor</a>
 					</p>
@@ -84,19 +85,25 @@
 			<div class="site-wrapper-inner">
 				<div class="row">
 					<div class="col-md-4">
-						<h2>Escolha</h2>
-						<p>Veja as melhores marinetes da cidade avaliadas de acordo
-						com os usuários e escolha sua favorita.</p>
+						<h2><img src="./imagens/list.png" style="height: 48px; width: 48px;" /> Escolha</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+						nisi ut aliquip ex ea commodo consequat.</p>
 					</div>
 					<div class="col-md-4">
-						<h2>Agende</h2>
-						<p>Agende o dia em que a Marinete irá realizar o serviço em
-						sua residência com a maior comodidade e agilidade possível.</p>
+						<h2><img src="./imagens/schedule.png" style="height: 48px; width: 48px;" /> Agende</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+						nisi ut aliquip ex ea commodo consequat.</p>
 					</div>
 					<div class="col-md-4">
-						<h2>Casa limpa</h2>
-						<p>Aproveite sua casa limpa e avalie a Marinete escolhida
-						de acordo com o serviço prestado, ajudando o resto da comunidade.</p>
+						<h2><img src="./imagens/clean.png" style="height: 48px; width: 48px;" /> Casa limpa</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+						nisi ut aliquip ex ea commodo consequat.</p>
 					</div>
 				</div>
 			</div>
@@ -104,7 +111,7 @@
 <!-- 	</section> -->
 
 	<!-- Contact Section -->
-	<form id="contato" action="SinergiaServlet" method="post" class="contato-section">
+	<form id="contato" action="MarineteServlet" method="post" class="contato-section">
 		<div class="site-wrapper" id="Contato" style="padding-top: 50px;">
 			<div class="site-wrapper-inner">
 				<div class="cover-container">
