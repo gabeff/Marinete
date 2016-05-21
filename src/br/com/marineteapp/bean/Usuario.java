@@ -1,4 +1,4 @@
-package com.marinete.bean;
+package br.com.marineteapp.bean;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

@@ -1,4 +1,4 @@
-package com.marinete.resource;
+package br.com.marineteapp.resource;
 
 import java.util.List;
 
@@ -7,8 +7,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 import com.google.gson.Gson;
-import com.marinete.bean.Marinete;
-import com.marinete.business.MarineteBusiness;
+
+import br.com.marineteapp.bean.Marinete;
+import br.com.marineteapp.business.MarineteBusiness;
 
 
 @Path("/marinete")

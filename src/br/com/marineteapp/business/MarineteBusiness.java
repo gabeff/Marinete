@@ -1,9 +1,9 @@
-package com.marinete.business;
+package br.com.marineteapp.business;
 
 import java.util.List;
 
-import com.marinete.bean.Marinete;
-import com.marinete.dao.MarineteDAO;
+import br.com.marineteapp.bean.Marinete;
+import br.com.marineteapp.dao.MarineteDAO;
 
 public class MarineteBusiness {
 	

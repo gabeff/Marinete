@@ -1,4 +1,4 @@
-package com.marinete.jdbc;
+package br.com.marineteapp.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

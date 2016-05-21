@@ -1,8 +1,8 @@
-package com.marinete.business;
+package br.com.marineteapp.business;
 
 
-import com.marinete.bean.Usuario;
-import com.marinete.dao.UsuarioDAO;
+import br.com.marineteapp.bean.Usuario;
+import br.com.marineteapp.dao.UsuarioDAO;
 
 public class UsuarioBusiness {
 	

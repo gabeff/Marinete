@@ -1,12 +1,12 @@
-package com.marinete.controller;
+package br.com.marineteapp.controller;
 
 import java.io.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import com.marinete.bean.Usuario;
-import com.marinete.business.UsuarioBusiness;
+import br.com.marineteapp.bean.Usuario;
+import br.com.marineteapp.business.UsuarioBusiness;
 
 public class MarineteServlet extends HttpServlet {
 

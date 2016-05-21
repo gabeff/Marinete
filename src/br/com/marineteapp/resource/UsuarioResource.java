@@ -1,4 +1,4 @@
-package com.marinete.resource;
+package br.com.marineteapp.resource;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -9,8 +9,8 @@ import javax.ws.rs.Produces;
 
 import org.json.JSONException;
 
-import com.marinete.bean.Usuario;
-import com.marinete.business.UsuarioBusiness;
+import br.com.marineteapp.bean.Usuario;
+import br.com.marineteapp.business.UsuarioBusiness;
 
 @Path("/usuario")
 public class UsuarioResource {

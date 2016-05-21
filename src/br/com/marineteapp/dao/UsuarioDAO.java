@@ -1,4 +1,4 @@
-package com.marinete.dao;
+package br.com.marineteapp.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -6,8 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 
-import com.marinete.bean.Usuario;
-import com.marinete.jdbc.ConnectionFactory;
+import br.com.marineteapp.bean.Usuario;
+import br.com.marineteapp.jdbc.ConnectionFactory;
 
 public class UsuarioDAO {
 

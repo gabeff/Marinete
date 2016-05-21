@@ -1,4 +1,4 @@
-package com.marinete.dao;
+package br.com.marineteapp.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +8,8 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.marinete.bean.Marinete;
-import com.marinete.jdbc.ConnectionFactory;
+import br.com.marineteapp.bean.Marinete;
+import br.com.marineteapp.jdbc.ConnectionFactory;
 
 public class MarineteDAO {
 	
