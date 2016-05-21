@@ -10,7 +10,7 @@
 	
 	<servlet>
 		<servlet-name>Marinete</servlet-name>
-		<servlet-class>com.marinete.controller.MarineteServlet</servlet-class>
+		<servlet-class>br.com.marineteapp.controller.MarineteServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Marinete</servlet-name>
