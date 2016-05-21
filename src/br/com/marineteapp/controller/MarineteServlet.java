@@ -39,7 +39,7 @@ public class MarineteServlet extends HttpServlet {
 				if (logado.equals("1")) {
 					session.setAttribute("currentSessionUser", usuario);
 					session.removeAttribute("invalidLogin");
-					response.sendRedirect("/Marinete/webservice/marinete/listar");
+					response.sendRedirect("webservice/marinete/listar");
 				}
 				else {
 					session.invalidate();
