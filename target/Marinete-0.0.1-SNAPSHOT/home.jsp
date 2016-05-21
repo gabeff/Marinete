@@ -64,7 +64,7 @@
 				</nav>
 
 				<div class="inner cover">
-					<h1 class="cover-heading"><img src="./imagens/logo_branco.png" />.</h1>
+					<h1 class="cover-heading"><img class="img-responsive" src="./imagens/logo_branco.png" /></h1>
 					<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
 						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
