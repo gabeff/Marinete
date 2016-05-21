@@ -1,0 +1,10 @@
+br\com\marineteapp\jdbc\ConnectionFactory.class
+br\com\marineteapp\resource\UsuarioResource.class
+br\com\marineteapp\resource\MarineteResource.class
+br\com\marineteapp\dao\MarineteDAO.class
+br\com\marineteapp\business\UsuarioBusiness.class
+br\com\marineteapp\bean\Marinete.class
+br\com\marineteapp\bean\Usuario.class
+br\com\marineteapp\dao\UsuarioDAO.class
+br\com\marineteapp\business\MarineteBusiness.class
+br\com\marineteapp\controller\MarineteServlet.class
