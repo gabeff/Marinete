@@ -36,7 +36,7 @@ public class MarineteServlet extends HttpServlet {
 				String logado = uBusiness.logar(usuario);
 				HttpSession session = request.getSession(true);
 
-				if (logado.equals("0")) {
+				if (logado.equals("1")) {
 					session.setAttribute("currentSessionUser", usuario);
 					session.removeAttribute("invalidLogin");
 					response.sendRedirect("/Marinete/webservice/marinete/listar");
