@@ -63,8 +63,8 @@
 						<div class="row">
 							<div class="media">
 								<div class="media-left media-middle">
-									<a href="#"> <img class="media-object"
-										src="./imagens/icone.png"
+									<a href="#"> <img class="img-circle"
+										src="./imagens/marinetes/marinete-${marinete.id}.png" onerror="this.src='./imagens/icone.png'"
 										style="width: 80px; height: 80px; margin-left: 5%;">
 									</a>
 								</div>
