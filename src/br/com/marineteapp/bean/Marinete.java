@@ -2,6 +2,9 @@ package br.com.marineteapp.bean;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.joda.time.LocalDate;
+import org.joda.time.Years;
+
 @XmlRootElement
 public class Marinete {
 
@@ -11,6 +14,7 @@ public class Marinete {
 	private String cidade;
 	private String estado;
 	private Double avaliacao;
+	private Integer idade;
 
 	public Integer getId() {
 		return id;
@@ -60,4 +64,15 @@ public class Marinete {
 		this.avaliacao = avaliacao;
 	}
 
+	public Integer getIdade() {
+		setIdade();
+		return idade;
+	}
+	
+	public void setIdade() {
+		LocalDate nascimento = new LocalDate (this.nascimento);
+		LocalDate now = new LocalDate();
+		Years idade = Years.yearsBetween(nascimento, now);
+		this.idade = idade.getYears();
+	}
 }
