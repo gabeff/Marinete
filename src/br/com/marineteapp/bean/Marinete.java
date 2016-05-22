@@ -14,6 +14,7 @@ public class Marinete {
 	private String cidade;
 	private String estado;
 	private Double avaliacao;
+	private Double avalPercent;
 	private Integer idade;
 
 	public Integer getId() {
@@ -75,4 +76,15 @@ public class Marinete {
 		Years idade = Years.yearsBetween(nascimento, now);
 		this.idade = idade.getYears();
 	}
+
+	public Double getAvalPercent() {
+		setAvalPercent(this.avaliacao);
+		return avalPercent;
+	}
+
+	public void setAvalPercent(Double avalPercent) {
+		this.avalPercent = (avalPercent*100)/5;
+	}
+	
+	
 }

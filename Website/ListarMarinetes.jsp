@@ -14,15 +14,19 @@
 
 <title>Marinete - Listar Marinetes</title>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="./js/jquery.barrating.min.js"></script>
 
 <!-- Bootstrap core CSS -->
 <link href="./css/bootstrap.min.css" rel="stylesheet">
-<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+<link
+	href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css"
+	rel="stylesheet" />
 <!-- Custom styles for this template -->
 <link href="./css/general.css" rel="stylesheet">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 <link rel="stylesheet" href="./css/fontawesome-stars.css">
 </head>
 
@@ -57,38 +61,30 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="row">
-							<div class="col-md-2">
-								<b>${marinete.nome}</b><br />
+							<div class="media">
+								<div class="media-left media-middle">
+									<a href="#"> <img class="media-object"
+										src="./imagens/icone.png"
+										style="width: 80px; height: 80px; margin-left: 5%;">
+									</a>
+								</div>
+								<div class="media-body">
+									<h4 class="media-heading">${marinete.nome}</h4>
+									${marinete.idade} anos </br>
+									<div class="rating-box">
+										<div class="rating" style="width: ${marinete.avalPercent}%;"></div>
+									</div>
+								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-2">${marinete.idade} anos</div>
-						</div>
-						<div class="row">
-							<div class="col-md-2">
-								<script type="text/javascript">
-									$(function() {
-										$('#example${marinete.id}').barrating({
-											theme : 'fontawesome-stars',
-											initialRating : ${marinete.avaliacao}
-										});
-									});
-								</script>
-								<select id="example${marinete.id}">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
-							</div>
-						</div>
+
 					</div>
 				</div>
 			</c:forEach>
 		</div>
 	</div>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
 </body>
 </html>

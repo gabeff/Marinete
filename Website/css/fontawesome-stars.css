@@ -1,3 +1,26 @@
+.rating-box {
+  position:relative;
+  vertical-align: middle;
+  display:inline-block;
+  color: lighten(@grayLight, 25%);
+}
+
+.rating-box:before{
+  content: url(../imagens/marinetee-50.png) url(../imagens/marinetee-50.png) url(../imagens/marinetee-50.png) url(../imagens/marinetee-50.png) url(../imagens/marinetee-50.png);
+}
+
+  .rating {
+    position: absolute;
+    left:0;
+    top:0;
+    white-space:nowrap;
+    overflow:hidden;
+    color: #F68127;
+  }
+    .rating:before {
+      content: url(../imagens/marinete-50.png) url(../imagens/marinete-50.png) url(../imagens/marinete-50.png) url(../imagens/marinete-50.png) url(../imagens/marinete-50.png);
+    }
+    
 .br-theme-fontawesome-stars .br-widget {
   height: 28px;
   white-space: nowrap;
