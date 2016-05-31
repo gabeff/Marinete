@@ -8,14 +8,24 @@ public class UsuarioBusiness {
 	
 	private UsuarioDAO usuarioDao;
 	
-	public String logar(Usuario usuario){
+	public Usuario logar(Usuario usuario){
 		usuarioDao = new UsuarioDAO();
 		return usuarioDao.logar(usuario);
+	}
+	
+	public String issueToken(Usuario usuario){
+		usuarioDao = new UsuarioDAO();
+		return usuarioDao.issueToken(usuario);
 	}
 	
 	public String cadastrar(Usuario usuario){
 		usuarioDao = new UsuarioDAO();
 		return usuarioDao.cadastrar(usuario);
+	}
+	
+	public Usuario getUsuarioByToken(String token){
+		usuarioDao = new UsuarioDAO();
+		return usuarioDao.getUsuarioByToken(token);
 	}
 
 }

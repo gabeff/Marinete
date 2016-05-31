@@ -1,13 +1,22 @@
 package br.com.marineteapp.bean;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Usuario {
+public class Usuario implements Serializable {
 	
 	private String nome;
 	private String senha;
 	
+	public Usuario(){}
+	
+	public Usuario(String nome, String senha) {
+		super();
+		this.nome = nome;
+		this.senha = senha;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -20,5 +29,6 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
 
 }

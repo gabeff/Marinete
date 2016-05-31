@@ -1,4 +1,4 @@
-package br.com.marineteapp.controller;
+package br.com.marineteapp.provider;
 
 import java.io.*;
 
@@ -33,10 +33,10 @@ public class MarineteServlet extends HttpServlet {
 
 				UsuarioBusiness uBusiness = new UsuarioBusiness();
 
-				String logado = uBusiness.logar(usuario);
+				usuario = uBusiness.logar(usuario);
 				HttpSession session = request.getSession(true);
 
-				if (logado.equals("1")) {
+				if (usuario != null) {
 					session.setAttribute("currentSessionUser", usuario);
 					session.removeAttribute("invalidLogin");
 					response.sendRedirect("ListarMarinetes.jsp");

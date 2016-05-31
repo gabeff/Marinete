@@ -1,9 +1,12 @@
 package br.com.marineteapp.dao;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 import java.sql.PreparedStatement;
 
 import br.com.marineteapp.bean.Usuario;
@@ -18,7 +21,7 @@ public class UsuarioDAO {
 	private String nome;
 	private String senha;
 
-	private void Init(){
+	private void Init() {
 		Close();
 		try {
 			if (currentCon == null || currentCon.isClosed()) {
@@ -48,7 +51,7 @@ public class UsuarioDAO {
 			}
 			stmt = null;
 		}
-		
+
 		if (pstmt != null) {
 			try {
 				pstmt.close();
@@ -68,37 +71,106 @@ public class UsuarioDAO {
 
 	}
 
-	public String logar(Usuario usuario) {
+	public Usuario logar(Usuario u) {
 		Init();
-		String retorno = null;
+		Usuario usuario = new Usuario();
 
-		nome = usuario.getNome();
-		senha = usuario.getSenha();
+		nome = u.getNome();
+		senha = u.getSenha();
 
 		String searchQuery = "select * from usuario where nome='" + nome + "' AND senha='" + senha + "'";
 
 		try {
-			
+
 			stmt = currentCon.createStatement();
 			rs = stmt.executeQuery(searchQuery);
 			boolean cadastrado = rs.next();
 
 			if (cadastrado) {
-				retorno = "1";
+				usuario.setNome(rs.getString("nome"));
+				usuario.setSenha(rs.getString("senha"));
 			} else {
-				retorno = "Usuário e/ou senha inválidos!";
+				usuario = null;
 			}
 		}
 
 		catch (Exception ex) {
-			retorno = "Login falhou: " + ex;
+			System.out.println(ex.getMessage());
+			usuario = null;
 		}
 
 		finally {
 			Close();
 		}
 
-		return retorno;
+		return usuario;
+	}
+
+	public String issueToken(Usuario usuario) {
+		Init();
+		String token = null;
+
+		try {
+			// cria um preparedStatement
+			String sql = "update usuario set token = ? where nome = ?";
+			pstmt = (PreparedStatement) currentCon.prepareStatement(sql);
+
+			// atribuir valores as variaveis ?
+			token = gerarToken();
+			pstmt.setString(1, token);
+			pstmt.setString(2, usuario.getNome());
+
+			// executa
+			pstmt.execute();
+			pstmt.close();
+		} catch (Exception ex) {
+			// retorna falha na geração do token
+			token = null;
+			System.out.println("Erro ao gerar token: " + ex.getMessage());
+		} finally {
+			Close();
+		}
+
+		return token;
+	}
+	
+	private String gerarToken() {
+		Random random = new SecureRandom();
+		String token = null;
+		token = new BigInteger(130, random).toString(32);
+		return token;
+	}
+	
+	public Usuario getUsuarioByToken(String token) {
+		Init();
+		Usuario usuario = new Usuario();
+
+		String searchQuery = "select * from usuario where token='" + token + "'";
+
+		try {
+
+			stmt = currentCon.createStatement();
+			rs = stmt.executeQuery(searchQuery);
+			boolean cadastrado = rs.next();
+
+			if (cadastrado) {
+				usuario.setNome(rs.getString("nome"));
+				usuario.setSenha(rs.getString("senha"));
+			} else {
+				usuario = null;
+			}
+		}
+
+		catch (Exception ex) {
+			System.out.println(ex.getMessage());
+			usuario = null;
+		}
+
+		finally {
+			Close();
+		}
+
+		return usuario;
 	}
 
 	public String cadastrar(Usuario usuario) {
@@ -117,7 +189,7 @@ public class UsuarioDAO {
 			// executa
 			pstmt.execute();
 			pstmt.close();
-			
+
 			// retorna sucesso
 			retorno = "1";
 		} catch (Exception ex) {
