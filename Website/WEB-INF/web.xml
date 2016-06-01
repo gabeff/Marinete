@@ -10,21 +10,10 @@
 	
 	<servlet>
 		<servlet-name>Marinete</servlet-name>
-		<servlet-class>br.com.marineteapp.controller.MarineteServlet</servlet-class>
+		<servlet-class>br.com.marineteapp.provider.MarineteServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Marinete</servlet-name>
 		<url-pattern>/MarineteServlet</url-pattern>
 	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>Jersey Web Application</servlet-name>
-		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Jersey Web Application</servlet-name>
-		<url-pattern>/webservice/*</url-pattern>
-	</servlet-mapping>
-
 </web-app>

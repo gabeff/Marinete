@@ -10,16 +10,17 @@ import com.google.gson.Gson;
 
 import br.com.marineteapp.bean.Marinete;
 import br.com.marineteapp.business.MarineteBusiness;
-
+import br.com.marineteapp.provider.Secured;
 
 @Path("/marinete")
 public class MarineteResource {
-	
+
 	private MarineteBusiness marineteBusiness;
-	
-	@Path("/listar")
+
 	@GET
+	@Path("/listar")
 	@Produces("application/json")
+	@Secured
 	public String listarMarinetes() {
 		marineteBusiness = new MarineteBusiness();
 		List<Marinete> marinetes = marineteBusiness.listarMarinetes();
