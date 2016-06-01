@@ -12,72 +12,20 @@ import java.sql.PreparedStatement;
 import br.com.marineteapp.bean.Usuario;
 import br.com.marineteapp.jdbc.ConnectionFactory;
 
-public class UsuarioDAO {
+public class UsuarioDAO extends ManagerDAO {
 
-	private static Connection currentCon = null;
-	private static ResultSet rs = null;
-	private static Statement stmt;
-	private static PreparedStatement pstmt;
 	private String nome;
 	private String senha;
 
-	private void Init() {
-		Close();
-		try {
-			if (currentCon == null || currentCon.isClosed()) {
-				currentCon = ConnectionFactory.getConnection();
-			}
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void Close() {
-		nome = null;
-		senha = null;
-
-		if (rs != null) {
-			try {
-				rs.close();
-			} catch (Exception e) {
-			}
-			rs = null;
-		}
-
-		if (stmt != null) {
-			try {
-				stmt.close();
-			} catch (Exception e) {
-			}
-			stmt = null;
-		}
-
-		if (pstmt != null) {
-			try {
-				pstmt.close();
-			} catch (Exception e) {
-			}
-			pstmt = null;
-		}
-
-		if (currentCon != null) {
-			try {
-				currentCon.close();
-			} catch (Exception e) {
-			}
-
-			currentCon = null;
-		}
-
-	}
-
+	// Logar Usuario
 	public Usuario logar(Usuario u) {
 		Init();
 		Usuario usuario = new Usuario();
 
 		nome = u.getNome();
 		senha = u.getSenha();
-
+		
+		// Buscar Usuario no banco por seu nome e senha
 		String searchQuery = "select * from usuario where nome='" + nome + "' AND senha='" + senha + "'";
 
 		try {
@@ -86,6 +34,7 @@ public class UsuarioDAO {
 			rs = stmt.executeQuery(searchQuery);
 			boolean cadastrado = rs.next();
 
+			// Se o rs (result set) retornou alguma linha é porque o login e senha são válidos
 			if (cadastrado) {
 				usuario.setNome(rs.getString("nome"));
 				usuario.setSenha(rs.getString("senha"));
@@ -105,7 +54,8 @@ public class UsuarioDAO {
 
 		return usuario;
 	}
-
+	
+	// Gerar um token para a sessão do usuario
 	public String issueToken(Usuario usuario) {
 		Init();
 		String token = null;
@@ -115,8 +65,10 @@ public class UsuarioDAO {
 			String sql = "update usuario set token = ? where nome = ?";
 			pstmt = (PreparedStatement) currentCon.prepareStatement(sql);
 
-			// atribuir valores as variaveis ?
+			// gerar token
 			token = gerarToken();
+			
+			// atribuir valores as variaveis ?
 			pstmt.setString(1, token);
 			pstmt.setString(2, usuario.getNome());
 
@@ -134,6 +86,7 @@ public class UsuarioDAO {
 		return token;
 	}
 	
+	// gerar token, string aleatorio de 32 caracteres
 	private String gerarToken() {
 		Random random = new SecureRandom();
 		String token = null;
@@ -141,10 +94,12 @@ public class UsuarioDAO {
 		return token;
 	}
 	
+	// validar sessão do usuario através do token fornecido
 	public Usuario getUsuarioByToken(String token) {
 		Init();
 		Usuario usuario = new Usuario();
 
+		// buscar no banco se o token existe e a qual usuario ele esta atribuido
 		String searchQuery = "select * from usuario where token='" + token + "'";
 
 		try {
@@ -173,6 +128,7 @@ public class UsuarioDAO {
 		return usuario;
 	}
 
+	// cadastrar usuario
 	public String cadastrar(Usuario usuario) {
 		Init();
 		String retorno = null;
