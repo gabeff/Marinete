@@ -7,6 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Random;
+
+import com.google.gson.JsonObject;
+
 import java.sql.PreparedStatement;
 
 import br.com.marineteapp.bean.Usuario;
