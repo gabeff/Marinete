@@ -28,7 +28,7 @@ public class MarineteServlet extends HttpServlet {
 			if (acao.equals("login")) {
 
 				Usuario usuario = new Usuario();
-				usuario.setNome(request.getParameter("login"));
+				usuario.setEmail(request.getParameter("email"));
 				usuario.setSenha(request.getParameter("senha"));
 
 				UsuarioBusiness uBusiness = new UsuarioBusiness();

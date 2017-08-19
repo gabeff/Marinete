@@ -23,18 +23,17 @@ public class UsuarioResource {
 	public Response authenticateUser(Usuario usuario) {
 
 		try {
-
 			// Authenticate the user using the credentials provided
 			logar(usuario);
 			
 			// Issue a token for the user
-            String token = issueToken(usuario);
-
+            String token = issueToken(usuario);       
+            
 			// Return the token on the response
-			return Response.ok(token).build();
+			return Response.ok(token).header("response", "1").build();
 
 		} catch (Exception e) {
-			return Response.status(Response.Status.UNAUTHORIZED).build();
+			return Response.status(Response.Status.UNAUTHORIZED).header("response", "0").build();
 		}
 	}
 
@@ -56,12 +55,15 @@ public class UsuarioResource {
 	}
 
 	@Path("/cadastrar")
-	@PUT
+	@POST
 	@Consumes("application/json")
-	@Produces("text/plain")
-	public String cadastrar(Usuario usuario) {
+	public Response cadastrar(Usuario usuario) {
 		usuarioBusiness = new UsuarioBusiness();
-		return usuarioBusiness.cadastrar(usuario);
+		String response = usuarioBusiness.cadastrar(usuario);
+		if (response.equals("1")) {
+			return Response.ok(response).header("response", "1").build();
+		}
+		return Response.ok(response).header("response", "0").build();
 	}
 
 }

@@ -4,7 +4,6 @@ import java.util.List;
 
 import br.com.marineteapp.bean.Marinete;
 import br.com.marineteapp.dao.MarineteDAO;
-import br.com.marineteapp.provider.Secured;
 
 public class MarineteBusiness {
 	

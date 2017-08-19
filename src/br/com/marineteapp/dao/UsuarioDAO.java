@@ -2,31 +2,22 @@ package br.com.marineteapp.dao;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Random;
+
 import java.sql.PreparedStatement;
 
 import br.com.marineteapp.bean.Usuario;
-import br.com.marineteapp.jdbc.ConnectionFactory;
 
 public class UsuarioDAO extends ManagerDAO {
-
-	private String nome;
-	private String senha;
 
 	// Logar Usuario
 	public Usuario logar(Usuario u) {
 		Init();
 		Usuario usuario = new Usuario();
-
-		nome = u.getNome();
-		senha = u.getSenha();
+		PessoaDAO pessoaDAO = new PessoaDAO();
 		
 		// Buscar Usuario no banco por seu nome e senha
-		String searchQuery = "select * from usuario where nome='" + nome + "' AND senha='" + senha + "'";
+		String searchQuery = "select * from usuario where email='" + u.getEmail() + "' AND senha='" + u.getSenha() + "'";
 
 		try {
 
@@ -36,8 +27,9 @@ public class UsuarioDAO extends ManagerDAO {
 
 			// Se o rs (result set) retornou alguma linha é porque o login e senha são válidos
 			if (cadastrado) {
-				usuario.setNome(rs.getString("nome"));
+				usuario.setEmail(rs.getString("email"));
 				usuario.setSenha(rs.getString("senha"));
+				usuario.setPessoa(pessoaDAO.getPessoaById(rs.getInt("pessoa_id")));
 			} else {
 				usuario = null;
 			}
@@ -62,7 +54,7 @@ public class UsuarioDAO extends ManagerDAO {
 
 		try {
 			// cria um preparedStatement
-			String sql = "update usuario set token = ? where nome = ?";
+			String sql = "update usuario set token = ? where email = ?";
 			pstmt = (PreparedStatement) currentCon.prepareStatement(sql);
 
 			// gerar token
@@ -70,7 +62,7 @@ public class UsuarioDAO extends ManagerDAO {
 			
 			// atribuir valores as variaveis ?
 			pstmt.setString(1, token);
-			pstmt.setString(2, usuario.getNome());
+			pstmt.setString(2, usuario.getEmail());
 
 			// executa
 			pstmt.execute();
@@ -98,6 +90,7 @@ public class UsuarioDAO extends ManagerDAO {
 	public Usuario getUsuarioByToken(String token) {
 		Init();
 		Usuario usuario = new Usuario();
+		PessoaDAO pessoaDAO = new PessoaDAO();
 
 		// buscar no banco se o token existe e a qual usuario ele esta atribuido
 		String searchQuery = "select * from usuario where token='" + token + "'";
@@ -109,8 +102,9 @@ public class UsuarioDAO extends ManagerDAO {
 			boolean cadastrado = rs.next();
 
 			if (cadastrado) {
-				usuario.setNome(rs.getString("nome"));
+				usuario.setEmail(rs.getString("email"));
 				usuario.setSenha(rs.getString("senha"));
+				usuario.setPessoa(pessoaDAO.getPessoaById(rs.getInt("pessoa_id")));
 			} else {
 				usuario = null;
 			}
@@ -130,24 +124,37 @@ public class UsuarioDAO extends ManagerDAO {
 
 	// cadastrar usuario
 	public String cadastrar(Usuario usuario) {
-		Init();
 		String retorno = null;
+		PessoaDAO pessoaDAO = new PessoaDAO();
 
 		try {
-			// cria um preparedStatement
-			String sql = "insert into usuario (nome, senha) values (?,?)";
-			pstmt = (PreparedStatement) currentCon.prepareStatement(sql);
+			// cadastra pessoa
+			retorno = pessoaDAO.cadastrar(usuario.getPessoa());
+			
+			// se pessoa cadastrada com sucesso, cadastrar usuario
+			if (retorno.equals("1")) {
+				
+				// pegar pessoa cadastrada para pegar o id dela
+				usuario.setPessoa(pessoaDAO.getPessoaByCpf(usuario.getPessoa().getCpf()));
 
-			// atribuir valores as variaveis ?
-			pstmt.setString(1, usuario.getNome());
-			pstmt.setString(2, usuario.getSenha());
+				// iniciar conexão com o banco e instanciar variaveis de manutenção
+				Init();
+				
+				// cria um preparedStatement
+				String sql = "insert into usuario (email, senha, pessoa_id) values (?,?,?)";
+				pstmt = (PreparedStatement) currentCon.prepareStatement(sql);
 
-			// executa
-			pstmt.execute();
-			pstmt.close();
+				// atribuir valores as variaveis ?
+				pstmt.setString(1, usuario.getEmail());
+				pstmt.setString(2, usuario.getSenha());
+				pstmt.setInt(3, usuario.getPessoa().getId());
 
-			// retorna sucesso
-			retorno = "1";
+				// executa
+				pstmt.execute();
+				pstmt.close();
+			}
+			
+			
 		} catch (Exception ex) {
 			// retorna falha no cadastro
 			retorno = "Cadastro Falhou: " + ex;

@@ -1,7 +1,9 @@
 $(document).ready(function() {
+	var token = getCookie('token');
+	
 	$.ajax({
 		beforeSend: function(request){
-			request.setRequestHeader('Authorization','Bearer hnvdje3opjqbpmktudgkikdi6d');
+			request.setRequestHeader('Authorization','Bearer '+token);
 		},
 	    datatype: 'json',
 		url: '/Marinete/rest/marinete/listar', 
