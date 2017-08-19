@@ -55,7 +55,12 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 						@Override
 						public String getName() {
 							UsuarioBusiness usuarioBusiness = new UsuarioBusiness();
-							return usuarioBusiness.getUsuarioByToken(token).getNome();
+							return usuarioBusiness.getUsuarioByToken(token).getPessoa().getNome();
+						}
+						
+						public Usuario getUsuario() {
+							UsuarioBusiness usuarioBusiness = new UsuarioBusiness();
+							return usuarioBusiness.getUsuarioByToken(token);
 						}
 					};
 				}

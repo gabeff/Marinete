@@ -20,11 +20,9 @@ public class UsuarioResource {
 	@Path("/logar")
 	@POST
 	@Consumes("application/json")
-	@Produces("application/json")
 	public Response authenticateUser(Usuario usuario) {
 
 		try {
-
 			// Authenticate the user using the credentials provided
 			logar(usuario);
 			
@@ -59,7 +57,6 @@ public class UsuarioResource {
 	@Path("/cadastrar")
 	@POST
 	@Consumes("application/json")
-	@Produces("application/json")
 	public Response cadastrar(Usuario usuario) {
 		usuarioBusiness = new UsuarioBusiness();
 		String response = usuarioBusiness.cadastrar(usuario);

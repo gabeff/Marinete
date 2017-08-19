@@ -49,7 +49,7 @@
 							</ul>
 							<form class="navbar-form navbar-right" action="MarineteServlet" method="post">
 								<div class="form-group">
-									<input type="text" name="login" placeholder="Login" class="form-control">
+									<input type="text" name="email" placeholder="E-mail" class="form-control">
 								</div>
 								<div class="form-group">
 									<input type="password" name="senha" placeholder="Senha" class="form-control">

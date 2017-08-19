@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Marinete - App das Diaristas</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Marinete CSS -->
+    <link href="css/marinete.css" rel="stylesheet">
+
+    <!-- Icon Fonts -->
+    <link href="marinete-icons/marinete-icons.css" rel="stylesheet" type="text/css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+   
+    <!-- Google Fonts -->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Quicksand">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Abel">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico">
+    
+    <!-- Marinete JS -->
+	<script src="./js/cookie.js"></script>
+	<script src="./js/login.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <div id="wrap">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg"  role="document">
+                <div class="modal-content model-cadastro">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title center-position titulos top-5" id="gridSystemModalLabel">Informe os seus dados</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <form class="form form-cadastro col-lg-12" action="checarMatricula.php" method="post">
+                                <div class="row">
+                                    <div class="form-group col-lg-12 col-xs-12">
+                                        <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
+                                            <label for="inputTitulo" class="control-label" id="titulos">Informações Iniciais</label>
+                                        </span>
+                                        <hr>    
+                                    </div>   
+                                </div>
+
+                                <div class="row"> 
+                                    <div class="form-group col-lg-7 col-md-7 col-sm-9 col-xs-12">
+                                        <label id="titulo-campo" for="input1" class="control-label">Nome</label>
+                                        <input type="text" class="form-control" id="inputNome" placeholder="Nome Completo">    
+                                    </div>
+                                    
+                                    <div class="form-group col-lg-2 col-md-2 col-sm-3 col-xs-12 top-10-hidden-sm top-10-hidden-md top-10-hidden-lg">
+                                        <label id="titulo-campo" for="select3" class="control-label">Sexo</label>
+                                        <select class="form-control" id="selectSexo">
+                                            <option selected>M</option>
+                                            <option>F</option>
+                                        </select>    
+                                    </div>
+                                    
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-5 col-xs-12 top-10-hidden-md top-10-hidden-lg">
+                                        <label id="titulo-campo" for="input2" class="control-label">Data Nascimento</label>
+                                        <input type="text" class="form-control" id="inputDtNascimento" placeholder="Apenas Números">    
+                                    </div>
+                                
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-7 col-xs-12 top-10">
+                                        <label id="titulo-campo" for="input1" class="control-label">CPF</label>
+                                        <input type="text" class="form-control" id="inputCpf" placeholder="Apenas Números">    
+                                    </div>
+                                    
+                                    <div class="form-group col-lg-9 col-md-9 col-sm-8 col-xs-12 top-10">
+                                        <label id="titulo-campo" for="input1" class="control-label">Endereço</label>
+                                        <input type="text" class="form-control" id="inputNome" placeholder="Logradouro">    
+                                    </div>
+                                
+                                    <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-12 top-10">
+                                        <label id="titulo-campo" for="input5" class="control-label">Número</label>
+                                        <input type="text" class="form-control" id="inputNumero" placeholder="N°">    
+                                    </div>
+                                    
+                                    <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-12 top-10">
+                                        <label id="titulo-campo" for="select1" class="control-label">UF</label>
+                                        <select class="form-control" id="selectUF">
+                                            <option selected>AC</option>
+                                            <option>AL</option>
+                                            <option>AM</option>
+                                            <option>BA</option>
+                                            <option>CE</option>
+                                        </select>     
+                                    </div>
+                                    
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 top-10">
+                                        <label id="titulo-campo" for="select1" class="control-label">Bairro</label>
+                                        <select class="form-control" id="selectBairro">
+                                            <option selected>Farol</option>
+                                            <option>Jatiúca</option>
+                                            <option>Benedito Bentes</option>
+                                            <option>Ponta Verde</option>
+                                            <option>José Tenório</option>
+                                        </select>     
+                                    </div>
+                                    
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 top-10">
+                                        <label id="titulo-campo" for="select2" class="control-label">Cidade</label>
+                                        <select class="form-control" id="selectCidade">
+                                            <option selected>Maceió</option>
+                                            <option>Palmeira dos Índios</option>
+                                            <option>Arapiraca</option>
+                                            <option>Coruripe</option>
+                                            <option>União dos Palmares</option>
+                                        </select>    
+                                    </div>    
+                                
+                                    <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12 top-10">
+                                        <label id="titulo-campo" for="input16" class="control-label">E-mail</label>
+                                        <input type="text" class="form-control" id="inputEmail" placeholder="INFORME">    
+                                    </div>    
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-lg-12 col-xs-12 top-20">
+                                        <span class="glyphicon glyphicon-user" aria-hidden="true">
+                                            <label for="inputTitulo" class="control-label" id="titulos">Dados da Conta</label>
+                                        </span>
+                                        <hr>    
+                                    </div>   
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                        <label id="titulo-campo" for="input16" class="control-label">Usuário</label>
+                                        <input type="text" class="form-control" id="inputUsuario" placeholder="INFORME">    
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                        <label id="titulo-campo" for="input16" class="control-label">Senha</label>
+                                        <input type="password" class="form-control" id="inputSenha" placeholder="INFORME">    
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                        <label id="titulo-campo" for="input16" class="control-label">Confirmar Senha</label>
+                                        <input type="password" class="form-control" id="inputConfSenha" placeholder="INFORME">    
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-xs-12 top-20 center-xs">
+                                            <button type="submit" class="btn btn-primary">Finalizar Cadastro</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>   
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="bt-rodape-form" type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <!-- Navigation -->
+        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="#page-top">
+                        <i class="marinete-warm warm-logo"></i><span class="logo-font hidden-sm">marinete</span>
+                    </a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                    <ul class="nav navbar-nav">
+                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                    </ul>
+                    <div class="form form-login">
+                        <i class="marinete-user"></i>
+                        <div class="form-group">
+                            <input class="form-control" id="email" type="text" placeholder="e-mail">    
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="senha" type="password" placeholder="senha">    
+                        </div>
+                        <input id="logar" type="button" onclick="login();" class="btn btn-default" value="Acessar" />
+                    </div>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav> 
+    
+        <info id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-8 col-sm-7 col-xs-12 top-10">
+                        <div class="row">
+                            <h1 class="tit-header">Agora você não dará mais desculpas <br><span class="subtit-header">por falta de tempo.</span></h1>
+                            <p class="up top-50 hidden-sm hidden-xs">O App das diaristas do brasil</p>
+                        </div>
+                        <div class="row botoes-header">
+                            <div class="col-lg-12">
+                                <div class="row center-position top-20">
+                                    <a class="btn btn-cadastre rt-10" href="#" role="button" data-toggle="modal" data-target="#myModal">Cadastre-se já</a>
+                                    <img src="img/google-play-badge.png" class="botao-googleplay lf-10" alt="Aplicativo Google">    
+                                </div>        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-5 hidden-xs">
+                        <div id="smart-app" class="row"></div>
+                    </div>
+                </div>
+            </div>
+        </info>
+    
+        <!-- Carousel -->
+        <header id="myCarousel" class="carousel slide carousel-fade">     
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <div class="item active" id="slider-02"></div>
+                <div class="item" id="slider-01"></div>
+                <div class="item" id="slider-03"></div>
+            </div>
+        </header>
+    
+        <!-- CONTEÚDO -->
+        <div class="container-fluid">
+            <div class="row top-20 h-100 yellow-bar"></div> 
+            <div class="container top-neg-60">
+                <!-- DESTAQUES -->
+                <div class="row bot-40-hidden-xs">
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="panel panel-destaque">
+                                    <div class="panel-body panel-body-destaque">
+                                        <a href="#"><img src="img/li-destaque-01.png" alt="destaque 1" class="img-circle"></a>
+                                    </div>
+                                    <div class="panel-footer panel-footer-destaque">
+                                        <h1 class="color-tit-panel-1">não se desespere</h1>
+                                        <p class="color-p-panel"><b>Acesse o site do Detran</b> e saiba de mais informações sobre a retirada de sua habilitação.</p>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="panel panel-destaque">
+                                    <div class="panel-body panel-body-destaque">
+                                        <a href="#"><img src="img/li-destaque-02.png" alt="destaque 2" class="img-circle"></a>
+                                    </div>
+                                    <div class="panel-footer panel-footer-destaque">
+                                        <h1 class="color-tit-panel-2">simples e prático</h1>
+                                        <p class="color-p-panel"><b>Não está na hora de você se habilitar ?</b> Cadastre-se em nosso site e matricule-se já !</p>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="panel panel-destaque">
+                                    <div class="panel-body panel-body-destaque">
+                                        <a href="#"><img src="img/li-destaque-03.png" alt="destaque 3" class="img-circle"></a>
+                                    </div>
+                                    <div class="panel-footer panel-footer-destaque">
+                                        <h1 class="color-tit-panel-3">dê sua avaliação</h1>
+                                        <p class="color-p-panel"><b>Conheça a rotina de aulas</b> e as novas regras a serem aplicadas de acordo com o Detran.</p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INFO -->
+                <div class="row bot-70">
+                    <div class="col-lg-12">
+                        <div class="panel panel-recomendar">
+                            <div class="panel-body pd-25">
+                                <p class="titulos centralizado">Recomende o Marinete App para um amigo</p>
+                                <div class="row top-20">
+                                    <form class="form form-recomendar col-lg-12" action="checarMatricula.php">
+                                        <div class="row">
+                                            <div class="form-group col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                                                <input type="text" class="form-control" id="inputNomeRecomendar" placeholder="Nome">    
+                                            </div>
+                                            <div class="form-group col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                                                <input type="text" class="form-control" id="inputEmailRecomendar" placeholder="E-MAIL">    
+                                            </div>
+                                            <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                                                <button type="submit" class="btn btn-primary">Confirmar</button>
+                                            </div> 
+                                        </div>  
+                                    </form>    
+                                </div>
+                            </div>
+                        </div>          
+                    </div>
+                </div>
+
+            </div>   
+        </div>
+    
+    </div>
+    
+    <!-- RODAPE -->
+    <footer id="footer">
+      <div class="container">
+          <!--<div class="row">
+              <p class="centralizado top-60 footer-info"><span class="glyphicon glyphicon-phone"></span> (82) <span class="text-white">3333-3333 | 9999-9999 - Atendimento 08h às 20h</span></p>  
+          </div>-->
+      </div>
+    </footer>
+    
+    <div class="container-fluid copyright-line">
+        <div class="row">
+            <p class="centralizado top-10"><b>© 2016 | Marinete App</b> - TODOS OS DIREITOS RESERVADOS</p>
+        </div>
+    </div>
+    <!-- RODAPE -->
+       
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+
+    <!-- Grayscale Theme JavaScript -->
+    <script src="js/grayscale.js"></script>
+    
+    <!-- Form Masks -->
+    <script src="js/form-masks/jquery.maskedinput.min.js"></script>
+    <script src="js/form-masks/masks.js"></script>
+    
+</body>
+
+</html>
