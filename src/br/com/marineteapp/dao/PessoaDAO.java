@@ -1,20 +1,26 @@
 package br.com.marineteapp.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import br.com.marineteapp.bean.Pessoa;
 
-public class PessoaDAO extends ManagerDAO {
+public class PessoaDAO extends Utils {
 
 	// cadastrar usuario
 	public String cadastrar(Pessoa pessoa) {
-		Init();
+		Connection conn = null;
 		String retorno = null;
 
 		try {
+			conn = getConnection();
+			
 			// cria um preparedStatement
 			String sql = "insert into pessoa (nome, cpf, nascimento, sexo) values (?,?,?,?)";
-			pstmt = (PreparedStatement) currentCon.prepareStatement(sql);
+			PreparedStatement pstmt = (PreparedStatement) conn.prepareStatement(sql);
 
 			// atribuir valores as variaveis ?
 			pstmt.setString(1, pessoa.getNome());
@@ -32,22 +38,27 @@ public class PessoaDAO extends ManagerDAO {
 			// retorna falha no cadastro
 			retorno = "Cadastro Falhou: " + ex;
 		} finally {
-			Close();
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return retorno;
 	}
 	
 	public Pessoa getPessoaById(int id) {
-		Init();
+		Connection conn = null;
 		Pessoa pessoa = new Pessoa();
 
 		String searchQuery = "select * from pessoa where id=" + id ;
 
 		try {
-
-			stmt = currentCon.createStatement();
-			rs = stmt.executeQuery(searchQuery);
+			
+			conn = getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(searchQuery);
 			boolean cadastrado = rs.next();
 
 			if (cadastrado) {
@@ -67,22 +78,27 @@ public class PessoaDAO extends ManagerDAO {
 		}
 
 		finally {
-			Close();
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return pessoa;
 	}
 
 	public Pessoa getPessoaByCpf(String cpf) {
-		Init();
+		Connection conn = null;
 		Pessoa pessoa = new Pessoa();
 
 		String searchQuery = "select * from pessoa where cpf='" + cpf + "'";
 
 		try {
-
-			stmt = currentCon.createStatement();
-			rs = stmt.executeQuery(searchQuery);
+			
+			conn = getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(searchQuery);
 			boolean cadastrado = rs.next();
 
 			if (cadastrado) {
@@ -102,7 +118,11 @@ public class PessoaDAO extends ManagerDAO {
 		}
 
 		finally {
-			Close();
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return pessoa;

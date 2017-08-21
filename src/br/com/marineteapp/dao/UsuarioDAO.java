@@ -1,18 +1,21 @@
 package br.com.marineteapp.dao;
 
+import java.sql.Statement;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Random;
-
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import br.com.marineteapp.bean.Usuario;
 
-public class UsuarioDAO extends ManagerDAO {
+public class UsuarioDAO extends Utils {
 
 	// Logar Usuario
 	public Usuario logar(Usuario u) {
-		Init();
+		Connection conn = null;
 		Usuario usuario = new Usuario();
 		PessoaDAO pessoaDAO = new PessoaDAO();
 		
@@ -20,9 +23,10 @@ public class UsuarioDAO extends ManagerDAO {
 		String searchQuery = "select * from usuario where email='" + u.getEmail() + "' AND senha='" + u.getSenha() + "'";
 
 		try {
-
-			stmt = currentCon.createStatement();
-			rs = stmt.executeQuery(searchQuery);
+			
+			conn = getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(searchQuery);
 			boolean cadastrado = rs.next();
 
 			// Se o rs (result set) retornou alguma linha é porque o login e senha são válidos
@@ -36,12 +40,16 @@ public class UsuarioDAO extends ManagerDAO {
 		}
 
 		catch (Exception ex) {
-			System.out.println(ex.getMessage());
+			ex.printStackTrace();
 			usuario = null;
 		}
 
 		finally {
-			Close();
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return usuario;
@@ -49,18 +57,20 @@ public class UsuarioDAO extends ManagerDAO {
 	
 	// Gerar um token para a sessão do usuario
 	public String issueToken(Usuario usuario) {
-		Init();
+		Connection conn = null;
 		String token = null;
 
 		try {
+			conn = getConnection();
+			
 			// cria um preparedStatement
 			String sql = "update usuario set token = ? where email = ?";
-			pstmt = (PreparedStatement) currentCon.prepareStatement(sql);
+			PreparedStatement pstmt = (PreparedStatement) conn.prepareStatement(sql);
 
 			// gerar token
 			token = gerarToken();
 			
-			// atribuir valores as variaveis ?
+			// atribuir valores as variaveis
 			pstmt.setString(1, token);
 			pstmt.setString(2, usuario.getEmail());
 
@@ -71,8 +81,13 @@ public class UsuarioDAO extends ManagerDAO {
 			// retorna falha na geração do token
 			token = null;
 			System.out.println("Erro ao gerar token: " + ex.getMessage());
+			ex.printStackTrace();
 		} finally {
-			Close();
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return token;
@@ -88,7 +103,7 @@ public class UsuarioDAO extends ManagerDAO {
 	
 	// validar sessão do usuario através do token fornecido
 	public Usuario getUsuarioByToken(String token) {
-		Init();
+		Connection conn = null;
 		Usuario usuario = new Usuario();
 		PessoaDAO pessoaDAO = new PessoaDAO();
 
@@ -96,9 +111,10 @@ public class UsuarioDAO extends ManagerDAO {
 		String searchQuery = "select * from usuario where token='" + token + "'";
 
 		try {
-
-			stmt = currentCon.createStatement();
-			rs = stmt.executeQuery(searchQuery);
+			
+			conn = getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(searchQuery);
 			boolean cadastrado = rs.next();
 
 			if (cadastrado) {
@@ -116,7 +132,11 @@ public class UsuarioDAO extends ManagerDAO {
 		}
 
 		finally {
-			Close();
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return usuario;
@@ -124,6 +144,7 @@ public class UsuarioDAO extends ManagerDAO {
 
 	// cadastrar usuario
 	public String cadastrar(Usuario usuario) {
+		Connection conn = null;
 		String retorno = null;
 		PessoaDAO pessoaDAO = new PessoaDAO();
 
@@ -138,11 +159,11 @@ public class UsuarioDAO extends ManagerDAO {
 				usuario.setPessoa(pessoaDAO.getPessoaByCpf(usuario.getPessoa().getCpf()));
 
 				// iniciar conexão com o banco e instanciar variaveis de manutenção
-				Init();
+				conn = getConnection();
 				
 				// cria um preparedStatement
 				String sql = "insert into usuario (email, senha, pessoa_id) values (?,?,?)";
-				pstmt = (PreparedStatement) currentCon.prepareStatement(sql);
+				PreparedStatement pstmt = (PreparedStatement) conn.prepareStatement(sql);
 
 				// atribuir valores as variaveis ?
 				pstmt.setString(1, usuario.getEmail());
@@ -159,7 +180,11 @@ public class UsuarioDAO extends ManagerDAO {
 			// retorna falha no cadastro
 			retorno = "Cadastro Falhou: " + ex;
 		} finally {
-			Close();
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return retorno;

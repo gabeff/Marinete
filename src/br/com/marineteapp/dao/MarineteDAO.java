@@ -1,5 +1,9 @@
 package br.com.marineteapp.dao;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,11 +12,11 @@ import org.joda.time.Years;
 
 import br.com.marineteapp.bean.Marinete;
 
-public class MarineteDAO extends ManagerDAO {
+public class MarineteDAO extends Utils {
 
 	// Retornar lista de marinetes por ordem decrescente de avaliação
 	public List<Marinete> listarMarinetes() {
-		Init();
+		Connection conn = null;
 		String searchQuery = "select p.*, m.avaliacao from marinete m, pessoa p "
 				+ "where m.id = p.id "
 				+ "order by avaliacao desc";
@@ -21,8 +25,9 @@ public class MarineteDAO extends ManagerDAO {
 
 		try {
 			
-			stmt = currentCon.createStatement();
-			rs = stmt.executeQuery(searchQuery);
+			conn = getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(searchQuery);
 
 			while (rs.next()) {
 				m = new Marinete();
@@ -48,7 +53,11 @@ public class MarineteDAO extends ManagerDAO {
 		}
 
 		finally {
-			Close();
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return marinetes;
